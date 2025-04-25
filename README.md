@@ -85,3 +85,22 @@ Student-marks-management-system/
 ├── grading.c / grading.h      # Grading logic
 ├── report.c / report.h        # Report and PDF generation
 ├── README.md                  # You're reading it!
+
+Setup Instructions
+
+Follow these steps to set up the project on your local machine:
+- Clone the Repository
+Clone the repository and navigate to the project directory:
+git clone <repository_url>
+cd Student-marks-management-system
+
+- Directory and File Setup
+Ensure the following directories and files exist:mkdir -p output/ReportCards
+mkdir -p data
+touch data/students.txt
+
+- Compile the Program
+Use the following gcc command to compile the program:gcc src/main.c src/student.c src/grading.c src/reports.c src/csv_export.c -Iinclude $(pkg-config --cflags --libs cairo) -o student_management.exe
+
+- To run the program
+./student_management.exe
