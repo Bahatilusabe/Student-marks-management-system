@@ -7,4 +7,7 @@ void generateReportCard(int studentID);
 // Generate report cards PDF for ALL students in the system
 void generateReportCards();
 
-#endif
+// View overall performance analytics of students
+void viewPerformanceAnalytics();
+
+#endif // REPORTS_H

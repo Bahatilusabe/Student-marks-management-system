@@ -1,11 +1,14 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
+#include <stdbool.h> // For 'bool' type
+
 #define MAX_SUBJECTS 13
 #define MAX_NAME_LEN 50
 #define MAX_SUBJECT_NAME 30
 #define MAX_STUDENTS 100
 
+// Subject structure
 typedef struct {
     char name[MAX_SUBJECT_NAME];
     int mark;
@@ -14,6 +17,7 @@ typedef struct {
     char feedback[100];
 } Subject;
 
+// Student structure
 typedef struct {
     int id;
     char name[MAX_NAME_LEN];
@@ -21,16 +25,17 @@ typedef struct {
     float average;
 } Student;
 
-// Functions
+// Function declarations
 void addStudent();
 void displayStudents();
 void searchStudent();
 void updateMarks();
 void deleteStudent();
-void loadStudentsFromFile();
-void saveStudentsToFile();
+bool loadStudentsFromFile();
+bool saveStudentsToFile(); // Updated return type for consistency
 
+// Global variables
 extern Student students[MAX_STUDENTS];
 extern int studentCount;
 
-#endif
+#endif // STUDENT_H

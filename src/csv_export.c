@@ -1,11 +1,19 @@
 #include <stdio.h>
+#include <stdlib.h>  // Include for `mkdir`
+#include <sys/stat.h> // Include for `mkdir`
 #include "../include/student.h"
 #include "../include/csv_export.h"
 
 void exportToCSV() {
+    // Ensure the output directory exists
+    struct stat st = {0};
+    if (stat("output", &st) == -1) {
+        mkdir("output", 0755);
+    }
+
     FILE *f = fopen("output/student_records.csv", "w");
     if (!f) {
-        perror("Failed to create CSV file");
+        perror("❌ Failed to create CSV file");
         return;
     }
 
@@ -29,6 +37,10 @@ void exportToCSV() {
         fprintf(f, ",%.2f\n", students[i].average);
     }
 
-    fclose(f);
-    printf("✅ Data exported to output/student_records.csv\n");
+    // Close file and confirm success
+    if (fclose(f) != 0) {
+        perror("❌ Error closing CSV file");
+    } else {
+        printf("✅ Data exported to output/student_records.csv\n");
+    }
 }
